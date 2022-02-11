@@ -1,7 +1,6 @@
 Customer.create(first_name: 'Luke', last_name:'John', email: 'lukejohn@gmail.com')
 
 
-
 Currency.create(code: 'USD', name: 'USD')
 Currency.create(code: 'AUD', name: 'Australian Dollar')
 Currency.create(code: 'BGN', name: 'Bulgarian Lev')

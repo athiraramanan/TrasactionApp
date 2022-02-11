@@ -6,7 +6,7 @@ class Api::V1::TransactionsController < ApplicationController
 		transaction = Transaction.new(transactions_params)
 		transaction.amount_pay_back = transaction.amount_pay_back_to_customers
     if transaction.save
-      render json:  { message: I18n.t('api.transactions.successfully_created'), data: transaction.to_api_json}, status: 200 
+      render json:  { message: I18n.t('api.transactions.successfully_created'), 'Transactions': transaction.to_api_json}, status: 200 
     else
       render json: transaction.errors,status: :unprocessable_entity
     end
@@ -16,7 +16,7 @@ class Api::V1::TransactionsController < ApplicationController
 	def index
 		transactions = Transaction.all.map{|transaction| transaction.to_api_json}
     if transactions
-      render json:  { message: I18n.t('api.transactions.data_found'), data: transactions}, status: 200 
+      render json:  { message: I18n.t('api.transactions.data_found'), 'Transactions': transactions}, status: 200 
     else
       render json:  { message: I18n.t('api.transactions.no_data_found')} ,status: 404
     end
@@ -26,8 +26,10 @@ class Api::V1::TransactionsController < ApplicationController
 	def update
     @transaction.update(transactions_params)
     @transaction.amount_pay_back = @transaction.amount_pay_back_to_customers
-    if @transaction
-      render json:  { message: I18n.t('api.transactions.data_found'), data: @transaction.to_api_json}, status: 200 
+    if @transaction.save
+      render json:  { message: I18n.t('api.transactions.data_found'), 'Transactions': @transaction.to_api_json}, status: 200 
+    else
+    	render json: @transaction.errors,status: :unprocessable_entity
     end
   end
 
@@ -35,7 +37,7 @@ class Api::V1::TransactionsController < ApplicationController
 	# GET /api/v1/transactions/:id
 	def show
     if @transaction
-      render json:  { message: I18n.t('api.transactions.data_found'), data: 	@transaction.to_api_json}, status: 200 
+      render json:  { message: I18n.t('api.transactions.data_found'), 'Transactions': 	@transaction.to_api_json}, status: 200 
     end
 	end
 

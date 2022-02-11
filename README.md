@@ -1,6 +1,5 @@
 # README
-This is an api application to list the latest measurements available in the history and also posible to list the measurement in a given interval.
-
+This is an api  a new microservice to store FX transactions. These transactions will store how much money we will receive from our customers in the input currency, and how much we will pay them out in the output currency.
 Prerequisites
 =============
 The setups steps expect following to be installed on the system.
@@ -39,13 +38,7 @@ The setups steps expect following to be installed on the system.
 			RAILS_ENV=test rails rswag
 	###### Spin up our app and check out the URL 
 		http://localhost:3000/api-docs
-6. To Test your code coverage
-	Add the below mentioned gem in our gemfile and bundle
-	###### gem "rubycritic", require: false
-	###### $ bundle
-	Running rubycritic with no arguments will analyse all the Ruby files in the current directory:
-	###### $ rubycritic
-7.To prepare ERD diagram
+6.To prepare ERD diagram
 	Add the below mentioned gem in our gemfile and bundle
 		```
 			group :development do
