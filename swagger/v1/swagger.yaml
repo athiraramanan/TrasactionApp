@@ -1,0 +1,132 @@
+---
+swagger: '2.0'
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/transactions":
+    get:
+      summary: list all transactions
+      tags:
+      - Transactions
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: Creates a transactions
+      tags:
+      - Transactions
+      consumes:
+      - multipart/form-data
+      produces:
+      - application/json
+      parameters:
+      - name: transactions[customer_id]
+        in: formData
+        type: integer
+      - name: transactions[amount_deposited]
+        in: formData
+        type: string
+      - name: transactions[currency_deposited_id]
+        in: formData
+        type: integer
+      - name: transactions[currency_pay_back_id]
+        in: formData
+        type: integer
+      - name: transactions[transaction_date]
+        in: formData
+        type: string
+      responses:
+        '200':
+          description: transactions created
+        '422':
+          description: invalid request
+  "/api/v1/transactions/{id}":
+    get:
+      summary: Retrieves a transaction
+      tags:
+      - Transactions
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        type: string
+        required: true
+      responses:
+        '200':
+          description: transactions found
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+            required:
+            - id
+        '404':
+          description: transactions not found
+        '406':
+          description: unsupported accept header
+    delete:
+      summary: Delete a transaction
+      tags:
+      - Transactions
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        type: string
+        required: true
+      responses:
+        '200':
+          description: Transaction found
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+            required:
+            - id
+        '404':
+          description: Transaction not found
+        '406':
+          description: unsupported accept header
+    put:
+      summary: Updates a transactions
+      tags:
+      - Transactions
+      consumes:
+      - multipart/form-data
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        type: string
+        required: true
+      - name: transactions[customer_id]
+        in: formData
+        type: integer
+      - name: transactions[amount_deposited]
+        in: formData
+        type: string
+      - name: transactions[currency_deposited_id]
+        in: formData
+        type: integer
+      - name: transactions[currency_pay_back_id]
+        in: formData
+        type: integer
+      - name: transactions[transaction_date]
+        in: formData
+        type: string
+      responses:
+        '201':
+          description: transactions created
+        '422':
+          description: invalid request
+servers:
+- url: http://127.0.0.1:3000
+  variables:
+    defaultHost:
+      default: www.example.com

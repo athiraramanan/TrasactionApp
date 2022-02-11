@@ -1,0 +1,16 @@
+default: &default
+ adapter: postgresql
+ encoding: unicode
+ pool: 5
+ host: db
+ timeout: 20000000
+ username: postgres
+ password: password
+
+development:
+ <<: *default
+ database: weather_sensor_dev
+
+test:
+ <<: *default
+ database: weather_sensor_test
