@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2022_02_09_210701) do
     t.integer "currency_deposited_id"
     t.decimal "amount_pay_back"
     t.integer "currency_pay_back_id"
-    t.date "transaction_date"
+    t.datetime "transaction_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

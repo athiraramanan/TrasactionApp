@@ -1,6 +1,6 @@
 # README
-This is an api  a new microservice to store FX transactions. These transactions will store how much money we will receive from our customers in the input currency, and how much we will pay them out in the output currency.
-Prerequisites
+	This is an api application to store FX transactions. These transactions will store how much money we will receive from our customers in the input currency, and how much we will pay them out in the output currency.Here you need to only supply the deposited amount , deposited currency also the currency you need to pay back the application itself find out the payback amount
+	Prerequisites
 =============
 The setups steps expect following to be installed on the system.
 
@@ -31,13 +31,15 @@ The setups steps expect following to be installed on the system.
 		rails g rswag:ui:install
 		RAILS_ENV=test rails g rswag:specs:install
     ###### Create the spec based on our controller
-		rails generate rspec:swagger Api::V1::MeasurementsController
+		rails generate rspec:swagger Api::V1::TransactionsController
 	###### Generate the Swagger JSON file(s)
 		rake rswag:specs:swaggerize
 		To run again
 			RAILS_ENV=test rails rswag
 	###### Spin up our app and check out the URL 
 		http://localhost:3000/api-docs
+	###### To run the rspec test 
+		rspec ./spec/requests/api/v1/transactions_test.rb
 6.To prepare ERD diagram
 	Add the below mentioned gem in our gemfile and bundle
 		```
@@ -94,10 +96,7 @@ In almost all cases ```docker-compose down```  removes the containers. Use the a
 1.Swagger Documentation
 		https://github.com/rswag/rswag
 
-2.Code Coverage
-		https://github.com/whitesmith/rubycritic
-
-3.Docker Setup
+2.Docker Setup
 	
 	Docker, Docker Compose, Dockerize the app    
 https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04

@@ -27,7 +27,7 @@ class Api::V1::TransactionsController < ApplicationController
     @transaction.update(transactions_params)
     @transaction.amount_pay_back = @transaction.amount_pay_back_to_customers
     if @transaction.save
-      render json:  { message: I18n.t('api.transactions.data_found'), 'Transactions': @transaction.to_api_json}, status: 200 
+      render json:  { message: I18n.t('api.transactions.successfully_updated'), 'Transactions': @transaction.to_api_json}, status: 200 
     else
     	render json: @transaction.errors,status: :unprocessable_entity
     end

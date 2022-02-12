@@ -9,8 +9,8 @@ default: &default
 
 development:
  <<: *default
- database: weather_sensor_dev
+ database: aza_fin_app_dev
 
 test:
  <<: *default
- database: weather_sensor_test
+ database: aza_fin_app_test

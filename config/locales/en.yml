@@ -4,6 +4,7 @@ en:
       no_data_found: 'No transactions found!'
       data_found: 'Successfully fetched transactions'
       successfully_created: 'Successfully Created'
+      successfully_updated: 'Successfully Updated'
       successfully_deleted: 'Successfully Deleted'
       params_mandatory: 'Start date and End date Mandatory'
       validate_date_range: 'End Date should be greater than Start Date'

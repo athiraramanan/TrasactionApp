@@ -5,8 +5,8 @@ class Transaction < ApplicationRecord
   delegate :first_name,:last_name,:email,  to: :customer, allow_nil: true
 
 	def to_api_json
-		return 'Customer Not existed' if customer.nil?
-  	{ 'id': id, 'Customer': customer&.customer_details,'AmountDeposited': amount_deposited, 'Currency Deposited ': currency_deposited.code, 'Amount PayBack': amount_pay_back, 'Currency PayBack': currency_pay_back.code ,  'Transaction Date': transaction_date.strftime('Deposited at %m/%d/%Y %I:%M %p') } 
+		return false if customer.nil?
+  	{ 'id': id, 'Customer': customer&.customer_details,'AmountDeposited': amount_deposited.round(2), 'Currency Deposited ': currency_deposited.code, 'Amount PayBack': amount_pay_back.round(2), 'Currency PayBack': currency_pay_back.code ,  'Transaction Date': transaction_date.strftime('Deposited at %m/%d/%Y %I:%M %p') } 
 	end
 
 	def amount_pay_back_to_customers
