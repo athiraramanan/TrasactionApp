@@ -34,6 +34,7 @@ describe Api::V1::TransactionsController, type: :controller do
             amount_deposited: 100
           }
         }
+        expect(JSON.parse(response.body)['Transactions']['state']).to eq('pending')
         expect(JSON.parse(response.body)['message']).to eq('Successfully Created')
         expect(response.status).to eq(200)
       end
